@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: social-ai-agent
+    runtime: python
+    rootDir: backend
+    buildCommand: bash build.sh
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: OUTPUT_DIR
+        value: /tmp/output
+    disk:
+      name: output-storage
+      mountPath: /tmp/output
+      sizeGB: 5
