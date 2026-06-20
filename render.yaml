@@ -2,6 +2,7 @@ services:
   - type: web
     name: social-ai-agent
     runtime: python
+    pythonVersion: "3.11.9"
     rootDir: backend
     buildCommand: bash build.sh
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
